@@ -77,11 +77,11 @@
             }
         } else {
             // 不是微信客户端，直接可以访问链接
-            // if (urlParmStr == url) {
-            //     urlParmStr = "https://hm.hencoder.cn";
-            // }
-            // console.log(urlParmStr);
-            // location.href = urlParmStr;
+            if (urlParmStr == url) {
+                urlParmStr = "https://hm.hencoder.cn";
+            }
+            console.log(urlParmStr);
+            location.href = urlParmStr;
         }
     </script>
 
