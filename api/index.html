@@ -1,42 +1,91 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0,viewport-fit=cover">
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0,viewport-fit=cover">
     <title>中转</title>
+    <style>
+        body,
+        html {
+            width: 100%;
+            height: 100%
+        }
+
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        body {
+            background: url('../images/WechatIMG.jpg');
+            background-size: 100%;
+        }
+
+        .scan-div {
+            position: fixed;
+            right: 5%;
+            bottom: 5%;
+            text-align: center;
+        }
+
+        .tips {
+            font-size: 10px;
+            text-align: center;
+        }
+
+        .icon-img {
+            width: 100px;
+            height: 100px;
+            vertical-align: middle;
+            margin: 0 .2em;
+        }
+    </style>
 </head>
-<body>
-    <div id="tips" style="font-size:25px;text-align: center;line-height: 50px;"></div>
+
+<body id="body">
+
+    <!-- <div id="tips" style="font-size:25px;text-align: center;line-height: 50px;"></div> -->
+    <div class="scan-div">
+        <img src="../images/ewm.png" class="icon-img" />
+        <p class="tips">邀请相似的灵魂一同起舞</p>
+        <p class="tips">阿哈追剧 等着你来</p>
+    </div>
+
     <script>
-    var url = document.location.toString();
-    var urlParmStr = url.slice(url.indexOf('=')+1);
-    var ua = navigator.userAgent.toLowerCase();
-    var isQQ = ua.indexOf('qq') != -1;
-    var isWeixin = ua.indexOf('micromessenger') != -1;
-    var isAndroid = ua.indexOf('android') != -1;
-    var isIos = (ua.indexOf('iphone') != -1) || (ua.indexOf('ipad') != -1);
+        var url = document.location.toString();
+        var urlParmStr = url.slice(url.indexOf('=') + 1);
+        var ua = navigator.userAgent.toLowerCase();
+        var isQQ = ua.indexOf('qq') != -1;
+        var isWeixin = ua.indexOf('micromessenger') != -1;
+        var isAndroid = ua.indexOf('android') != -1;
+        var isIos = (ua.indexOf('iphone') != -1) || (ua.indexOf('ipad') != -1);
 
-    var notice_openBrowser = "<h2>请点击右上角，通过浏览器打开本页面。</h2>"
+        var notice_openBrowser = "<h2>请点击右上角，通过浏览器打开本页面。</h2>"
 
-    // 判断是不是在微信客户端打开
-    if(isWeixin || isQQ) {
-    // 判断是在Android的微信客户端还是Ios的微信客户端
-    if (isAndroid) {
-    document.getElementById("tips").innerHTML=notice_openBrowser;
-    }else if (isIos) {
-    document.getElementById("tips").innerHTML=notice_openBrowser;
-    }else{
-    document.getElementById("tips").innerHTML=notice_openBrowser;
-    }
-    } else {
-    // 不是微信客户端，直接可以访问链接
-    if (urlParmStr == url){
-        urlParmStr = "https://hm.hencoder.cn";
-    }
-    console.log(urlParmStr);
-    location.href=urlParmStr;
-    }
-</script>
-    
+        // 判断是不是在微信客户端打开
+        if (isWeixin || isQQ) {
+            // 判断是在Android的微信客户端还是Ios的微信客户端
+            if (isAndroid) {
+                // document.getElementById("tips").innerHTML = notice_openBrowser;
+            } else if (isIos) {
+                // document.getElementById("tips").innerHTML = notice_openBrowser;
+            } else {
+                // document.getElementById("tips").innerHTML = notice_openBrowser;
+            }
+        } else {
+            // 不是微信客户端，直接可以访问链接
+            if (urlParmStr == url){
+                urlParmStr = "https://hm.hencoder.cn";
+            }
+            console.log(urlParmStr);
+            location.href=urlParmStr;
+        }
+    </script>
+
+
+
 </body>
+
 </html>
